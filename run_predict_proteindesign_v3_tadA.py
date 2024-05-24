@@ -132,12 +132,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 print(device)
 
-
-#prename = 'UP000000437_7955_DANRE_v2'
-#prename = 'UP000005640_9606_HUMAN_v2'
-#prename = 'UP000008816_93061_STAA8_v2'
 prename = 'CATH'
-#prename = 'CATH4ts50'
 
 import os
 import numpy as np
@@ -253,7 +248,6 @@ def load_data():
 
 
 
-
 def loss_nll_flatten(S, log_probs):
     """ Negative log probabilities """
     criterion = torch.nn.NLLLoss(reduction='none')
@@ -312,9 +306,6 @@ def predict_model( model, test_loader, name, outdir):
 
 
 
-
-
-
 def run_model( args ):
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     #print(device)
@@ -333,11 +324,7 @@ def run_model( args ):
     num_params = sum(param.numel() for param in model.parameters())
     #print('Number of parameters: %d'%(num_params) )
 
-    #model.load_state_dict( torch.load( '/share/home/liguipeng/3d21d/AlphaDesign/models/CATH_16_Tue Apr 18 09:25:49 2023.pth_epoch70.pth') )
-    #model.load_state_dict( torch.load( '/share/home/liguipeng/3d21d/AlphaDesign/models/CATH_TadA_16_Wed May 15 00:20:22 2024.pth') )
-    #model.load_state_dict( torch.load( '/share/home/liguipeng/3d21d/AlphaDesign/models/CATH_TadA_16_Fri May 17 10:45:01 2024.pth') )
     model.load_state_dict( torch.load( '/share/home/liguipeng/3d21d/AlphaDesign/models/CATH_TadA_16_Wed May 22 14:07:11 2024.pth') )
-    #model.load_state_dict( torch.load( '/share/home/liguipeng/3d21d/AlphaDesign/models/CATH_16_Mon Apr 17 22:37:40 2023.pth') )
     loss_fn = torch.nn.CrossEntropyLoss()
     targetlist = []
     if args.input.endswith('.pdb'):
