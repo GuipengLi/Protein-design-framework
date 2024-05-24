@@ -25,8 +25,9 @@ Step1. Train the protein design model
 Step2. Fine-tune the protein design model for TadA
 --------------------------------------------------
 
-Before runing this script, you need to set the path of checkpoint for the pre-tained model from step1.
+Before runing this script, you need to prepare the dataset( using ESMFold to generated pdb files). Then set the path of checkpoint for the pre-tained model from step1. The esmfold_inference.py file is directly from [ESM2](https://github.com/facebookresearch/esm).
 
+    $ python esmfold_inference.py -i seqdump_8e2p_top4791.fa -o esmfold/8e2p_top4791 > seqdump_8e2p_top4791.log
     $ python train_test_design_fp16_v13v3best2_tadA.py
     
 
