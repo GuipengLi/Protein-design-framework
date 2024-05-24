@@ -125,12 +125,12 @@ print(device)
 prename = 'CATH'
 
 def load_CATHtest():
-    with open('/share/home/liguipeng/3d21d/ProDesign/data/cath/chain_set_splits.json','r') as f:
+    with open('data/cath/chain_set_splits.json','r') as f:
         test_split = json.load(f)
     alphabet='ACDEFGHIKLMNPQRSTVWY'
     alphabet_set = set([a for a in alphabet])
     max_length = 500
-    with open('/share/home/liguipeng/3d21d/ProDesign/data/cath/chain_set.jsonl') as f:
+    with open('data/cath/chain_set.jsonl') as f:
         lines = f.readlines()
         data_list = []
         for line in lines:
@@ -180,7 +180,7 @@ def load_TS50():
 
 
 def load_TS500():
-    dataf = json.load(open('/share/home/liguipeng/3d21d/ProDesign/data/ts/ts500.json','r'))
+    dataf = json.load(open('data/ts/ts500.json','r'))
     data = []
     i = 0
     for x in dataf:
@@ -514,15 +514,7 @@ def train_model( prename):
 
         writer.add_scalar('train_loss', epoch_loss, epoch)
         writer.add_scalar('valid_loss', current_valid_loss, epoch)
-        #writer.add_scalar('test_loss', current_test_loss, epoch)
-        #writer.add_scalar('valid_perplexity', validation_perplexity, epoch)
-        #writer.add_scalar('test_perplexity', test_perplexity, epoch)
-        #writer.add_scalar('test_recovery', recovery, epoch)
 
-        #history['train_loss'].append(epoch_loss)
-        #history['val_loss'].append(current_valid_loss)
-        #history['test_loss'].append(current_test_loss)
-        #history['test_roc'].append(roc_auc['Fold'+str(fold)])
         #if epoch % 5 == 0:
         #print('{} seconds'.format(time.time() - t0), scheduler.get_last_lr() )
         print('{} seconds'.format(time.time() - t0) )
