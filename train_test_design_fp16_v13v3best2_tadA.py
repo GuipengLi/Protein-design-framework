@@ -24,7 +24,6 @@ from tensorboardX import SummaryWriter
 
 
 
-
 #from sklearn.metrics import roc_curve, auc
 
 ##################
@@ -122,20 +121,16 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(device)
 
 
-#prename = 'UP000000437_7955_DANRE_v2'
-#prename = 'UP000005640_9606_HUMAN_v2'
-#prename = 'UP000008816_93061_STAA8_v2'
 prename = 'CATH'
-#prename = 'CATH43'
-#prename = 'CATH4ts50'
+
 
 def load_CATHtest():
-    with open('/share/home/liguipeng/3d21d/ProDesign/data/cath/chain_set_splits.json','r') as f:
+    with open('data/cath/chain_set_splits.json','r') as f:
         test_split = json.load(f)
     alphabet='ACDEFGHIKLMNPQRSTVWY'
     alphabet_set = set([a for a in alphabet])
     max_length = 500
-    with open('/share/home/liguipeng/3d21d/ProDesign/data/cath/chain_set.jsonl') as f:
+    with open('data/cath/chain_set.jsonl') as f:
         lines = f.readlines()
         data_list = []
         for line in lines:
@@ -185,7 +180,7 @@ def load_TS50():
 
 
 def load_TS500():
-    dataf = json.load(open('/share/home/liguipeng/3d21d/ProDesign/data/ts/ts500.json','r'))
+    dataf = json.load(open('data/ts/ts500.json','r'))
     data = []
     i = 0
     for x in dataf:
@@ -491,8 +486,7 @@ def train_model( prename):
     )
 
     #load pre-trained models
-    #model.load_state_dict( torch.load( '/share/home/liguipeng/3d21d/AlphaDesign/models/CATH_16_Mon Apr 17 22:37:40 2023.pth_epoch61.pth') )
-    model.load_state_dict( torch.load( '/share/home/liguipeng/3d21d/AlphaDesign/models/CATH_16_Tue May 14 14:06:14 2024.pth') )
+    model.load_state_dict( torch.load( 'models/CATH_16_Tue May 14 14:06:14 2024.pth') )
 
     model.to(device)
     #model.half() # convert to FP16
@@ -599,15 +593,7 @@ def train_model( prename):
 
         writer.add_scalar('train_loss', epoch_loss, epoch)
         writer.add_scalar('valid_loss', current_valid_loss, epoch)
-        #writer.add_scalar('test_loss', current_test_loss, epoch)
-        #writer.add_scalar('valid_perplexity', validation_perplexity, epoch)
-        #writer.add_scalar('test_perplexity', test_perplexity, epoch)
-        #writer.add_scalar('test_recovery', recovery, epoch)
 
-        #history['train_loss'].append(epoch_loss)
-        #history['val_loss'].append(current_valid_loss)
-        #history['test_loss'].append(current_test_loss)
-        #history['test_roc'].append(roc_auc['Fold'+str(fold)])
         #if epoch % 5 == 0:
         #print('{} seconds'.format(time.time() - t0), scheduler.get_last_lr() )
         print('{} seconds'.format(time.time() - t0) )
