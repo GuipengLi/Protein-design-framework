@@ -121,12 +121,8 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(device)
 
 
-#prename = 'UP000000437_7955_DANRE_v2'
-#prename = 'UP000005640_9606_HUMAN_v2'
-#prename = 'UP000008816_93061_STAA8_v2'
+
 prename = 'CATH'
-#prename = 'CATH43'
-#prename = 'CATH4ts50'
 
 def load_CATHtest():
     with open('/share/home/liguipeng/3d21d/ProDesign/data/cath/chain_set_splits.json','r') as f:
