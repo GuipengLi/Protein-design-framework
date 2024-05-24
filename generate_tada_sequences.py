@@ -145,7 +145,7 @@ def get_identity_score( xs, ys):
 
 model, alphabet = esm.pretrained.esm2_t33_650M_UR50D()
 
-state_dict = torch.load(fr'/share/home/liguipeng/3d21d/AlphaDesign/BE/model_TadA_4791_best.pt')
+state_dict = torch.load(fr'model_TadA_4791_best.pt')
 model.load_state_dict(state_dict)
 
 batch_converter = alphabet.get_batch_converter()
