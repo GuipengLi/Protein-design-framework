@@ -324,7 +324,7 @@ def run_model( args ):
     num_params = sum(param.numel() for param in model.parameters())
     #print('Number of parameters: %d'%(num_params) )
 
-    model.load_state_dict( torch.load( '/share/home/liguipeng/3d21d/AlphaDesign/models/CATH_TadA_16_Wed May 22 14:07:11 2024.pth') )
+    model.load_state_dict( torch.load( 'models/CATH_TadA_16_Wed May 22 14:07:11 2024.pth') )
     loss_fn = torch.nn.CrossEntropyLoss()
     targetlist = []
     if args.input.endswith('.pdb'):
