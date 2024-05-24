@@ -4,7 +4,6 @@
 import argparse
 from time import gmtime, strftime
 
-from Bio import SeqIO
 
 parser = argparse.ArgumentParser(description='Fixed backbone protein sequence design, given a pdb file as input to design aa sequence to fold as the pdb structure.')
 parser.add_argument('-i','--input',  default='test_demo.txt', required=True,help='input file is a pdb file or  a list of pdb files, each line is one pdb file name')
@@ -335,7 +334,6 @@ def run_model( args ):
                 if line.strip():    
                     targetlist.append( line.strip())
 
-    #pdb = load_pdb('test_targets/6wvs.chainA.pdb')
     for path in targetlist:
         name = os.path.basename(path)
         print( name)
