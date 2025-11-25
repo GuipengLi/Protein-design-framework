@@ -1,7 +1,7 @@
 Protein design framework
 ========================
 
-This repository present the protein design framework described in the [paper](https://www.biorxiv.org/content/10.1101/2024.04.28.591233v2.full). The fixed-backbone protein sequence design model (PSdesign) were built based on [AlphaDesign](https://arxiv.org/abs/2202.01079). We also fine-tuned the [ESM2](https://github.com/facebookresearch/esm) model to get a specialized version, ESM2_TadA. These codes are only available for non-commercial usage.
+This repository present the protein design framework described in the [paper](https://www.biorxiv.org/content/10.1101/2024.04.28.591233v2.full). The fixed-backbone protein sequence design model (PSdesign) were built based on [AlphaDesign](https://arxiv.org/abs/2202.01079). We also fine-tuned the [ESM2](https://github.com/facebookresearch/esm) model to get a specialized version, ESM2_TadA.
 
 
 Requirements
@@ -18,6 +18,7 @@ The following python packages are required.
 
 Step1. Train the protein design model
 -------------------------------------
+This step is to train a general fixed-backbone protein sequence design model, designated as PSdesign.
 
     $ python train_test_design_fp16_v13v3best2.py
 
